@@ -14,7 +14,7 @@ for pair in testCases
 end
 
 lines = open("part1.txt") do file
-    readlines(file)
+	readlines(file)
 end
 println(lines)
 

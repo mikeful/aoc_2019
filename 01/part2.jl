@@ -1,9 +1,9 @@
 function calculate_fuel(mass)
 	fuel_cost = Int(floor(mass / 3) - 2)
 	if fuel_cost > 0
-	    return fuel_cost + calculate_fuel(fuel_cost)
-    else
-    	return 0
+		return fuel_cost + calculate_fuel(fuel_cost)
+	else
+		return 0
 	end
 end
 
@@ -18,7 +18,7 @@ for pair in testCases
 end
 
 lines = open("part1.txt") do file
-    readlines(file)
+	readlines(file)
 end
 println(lines)
 
