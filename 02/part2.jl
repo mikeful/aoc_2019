@@ -42,12 +42,15 @@ function search(original_program)
 	end
 end
 
-line = open("input.txt") do file
-	read(file, String)
+function main()
+	line = open("input.txt") do file
+		read(file, String)
+	end
+	println(line)
+
+	original_program = parse.(Int, split(line, ","))
+	@time noun, verb = search(original_program)
+
+	println(100 * noun + verb)
 end
-println(line)
-
-original_program = parse.(Int, split(line, ","))
-@time noun, verb = search(original_program)
-
-println(100 * noun + verb)
+main()
