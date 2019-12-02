@@ -9,27 +9,22 @@ addprocs()
 		memory_index = counter + 1
 
 		opcode = memory[memory_index]
-		if opcode == 1
-			number1_index = memory[memory_index + 1] + 1
-			number2_index = memory[memory_index + 2] + 1
-			destination_index = memory[memory_index + 3] + 1
-			number1 = memory[number1_index]
-			number2 = memory[number2_index]
+		if opcode == 99
+			return memory[1]
+		end
 
+		number1_index = memory[memory_index + 1] + 1
+		number2_index = memory[memory_index + 2] + 1
+		destination_index = memory[memory_index + 3] + 1
+		number1 = memory[number1_index]
+		number2 = memory[number2_index]
+
+		if opcode == 1
 			memory[destination_index] = number1 + number2
 		elseif opcode == 2
-			number1_index = memory[memory_index + 1] + 1
-			number2_index = memory[memory_index + 2] + 1
-			destination_index = memory[memory_index + 3] + 1
-			number1 = memory[number1_index]
-			number2 = memory[number2_index]
-
 			memory[destination_index] = number1 * number2
-		elseif opcode == 99
-			return memory[1]
 		else
-			# Unkown opcode
-			return nothing
+			return nothing # Unknown opcode
 		end
 
 		counter += 4
