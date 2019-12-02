@@ -41,7 +41,7 @@ function search(original_program)
 
 			result = compute(program)
 			if result == 19690720
-			    return noun, verb
+				return noun, verb
 			end
 		end
 	end
