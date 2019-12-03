@@ -24,7 +24,7 @@ function main()
 	println(lines)
 
 	# https://docs.julialang.org/en/v1/base/arrays/index.html#Base.Broadcast.broadcast
-	@time result = sum(
+	result = sum(
 		calculate_fuel.(
 			parse.(
 				Int, lines

@@ -49,7 +49,7 @@ function main()
 	program[2] = 12
 	program[3] = 2
 
-	@time result = compute(program)
+	result = compute(program)
 
 	println(result)
 end

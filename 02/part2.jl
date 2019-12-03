@@ -49,7 +49,7 @@ function main()
 	println(line)
 
 	original_program = parse.(Int, split(line, ","))
-	@time noun, verb = search(original_program)
+	noun, verb = search(original_program)
 
 	println(100 * noun + verb)
 end

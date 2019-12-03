@@ -59,7 +59,7 @@ function main()
 	partial_search = partial(search, original_program)
 	word_pairs = [(noun, verb) for noun in 0:99, verb in 0:99]
 
-	@time result = pmap(partial_search, word_pairs)
+	result = pmap(partial_search, word_pairs)
 
 	noun, verb = filter(value -> value != nothing, result)[1]
 	println(100 * noun + verb)
