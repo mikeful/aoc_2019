@@ -13,9 +13,7 @@ function build_coordinates(directions)
     coordinates = [0 0]
     all_coordinates = Set{Tuple}()
 
-    for pair in directions
-        direction, distance = pair
-
+    for (direction, distance) in directions
         if direction == "U"
             # Up
             for coordinate_step in coordinates[2]+1:coordinates[2]+distance
@@ -50,7 +48,7 @@ function calculate_distances(crosses)
     # Convert set to array and calculate Manhattan distance
     map(
         (cross)->abs(cross[1])+abs(cross[2]),
-        [x for x in crosses]
+        [cross for cross in crosses]
     )
 end
 
@@ -70,8 +68,7 @@ function main()
         ("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7", 135)
     ]
 
-    for pair in testCases
-        test_lines, expected = pair
+    for (test_lines, expected) in testCases
         lines = split(test_lines, "\n")
         wires = parse_wire.(convert.(String, lines))
 
