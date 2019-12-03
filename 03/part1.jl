@@ -10,34 +10,31 @@ function parse_wire(wire)
 end
 
 function build_coordinates(directions)
-    coordinates = [0 0]
+    x = 0
+    y = 0
     all_coordinates = Set{Tuple}()
 
     for (direction, distance) in directions
-        if direction == "U"
-            # Up
-            for coordinate_step in coordinates[2]+1:coordinates[2]+distance
-                push!(all_coordinates, (coordinates[1], coordinate_step))
+        if direction == "U" # Up
+            for coordinate_step in x+1:x+distance
+                push!(all_coordinates, (y, coordinate_step))
             end
-            coordinates[2] += distance
-        elseif direction == "D"
-            # Down
-            for coordinate_step in coordinates[2]-distance:coordinates[2]-1
-                push!(all_coordinates, (coordinates[1], coordinate_step))
+            x += distance
+        elseif direction == "D" # Down
+            for coordinate_step in x-distance:x-1
+                push!(all_coordinates, (y, coordinate_step))
             end
-            coordinates[2] -= distance
-        elseif direction == "L"
-            # Left
-            for coordinate_step in coordinates[1]-distance:coordinates[1]-1
-                push!(all_coordinates, (coordinate_step, coordinates[2]))
+            x -= distance
+        elseif direction == "L" # Left
+            for coordinate_step in y-distance:y-1
+                push!(all_coordinates, (coordinate_step, x))
             end
-            coordinates[1] -= distance
-        else
-            # Right
-            for coordinate_step in coordinates[1]+1:coordinates[1]+distance
-                push!(all_coordinates, (coordinate_step, coordinates[2]))
+            y -= distance
+        else # Right
+            for coordinate_step in y+1:y+distance
+                push!(all_coordinates, (coordinate_step, x))
             end
-            coordinates[1] += distance
+            y += distance
         end
     end
 
