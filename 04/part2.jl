@@ -2,27 +2,29 @@ numpairs = Set([string(x, x) for x in 0:9])
 droppairs = [string(num, num, num) for num in 0:9]
 
 function is_valid(code)
-    length(code) != 6 ? (return false) : nothing
+    if length(code) != 6
+        return false
+    end
 
-    (join(sort(collect(code)))) != code ? (return false) : nothing
+    if (join(sort(collect(code)))) != code
+        return false
+    end
 
-    found_drop_pairs = []
+    found_drop_set = Set()
     for pair in droppairs
         if occursin(pair, code)
-            push!(found_drop_pairs, pair[1:2])
+            push!(found_drop_set, pair[1:2])
         end
     end
-    found_drop_set = Set(found_drop_pairs)
 
-    found_pairs = []
-    for pair in [numpair for numpair in setdiff(numpairs, found_drop_set)]
+    found_pairs = 0
+    for pair in setdiff(numpairs, found_drop_set)
         if occursin(pair, code)
-            push!(found_pairs, pair)
+            found_pairs += 1
         end
     end
-    length(found_pairs) == 0 ? (return false) : nothing
 
-    true
+    return found_pairs == 0 ? false : true
 end
 
 function main()
@@ -44,13 +46,13 @@ function main()
 
     input = 278384:824795
 
-    result = []
+    result = 0
     for x in input
         if is_valid(string(x))
-            push!(result, string(x))
+            result += 1
         end
     end
 
-    println(length(result))
+    println(result)
 end
 main()
