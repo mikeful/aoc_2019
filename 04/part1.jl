@@ -2,16 +2,21 @@ numpairs = Set([string(x, x) for x in 0:9])
 
 function is_valid(code)
     length(code) != 6 ? (return false) : nothing
-    
-    found = false
-    for pair in numpairs
-        found = found | occursin(pair, code)
-    end
-    !found ? (return false) : nothing
+
+    !pairfound(code) ? (return false) : nothing
     
     (join(sort(collect(code)))) != code ? (return false) : nothing
 
     true
+end
+
+function pairfound(code)
+    for pair in numpairs
+        if occursin(pair, code)
+            return true
+        end
+    end
+    false
 end
 
 function main()
