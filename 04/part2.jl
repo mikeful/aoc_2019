@@ -12,11 +12,10 @@ function is_valid(code)
             push!(found_drop_pairs, pair[1:2])
         end
     end
-
     found_drop_set = Set(found_drop_pairs)
 
     found_pairs = []
-    for pair in [cross for cross in setdiff(numpairs, found_drop_set)]
+    for pair in [numpair for numpair in setdiff(numpairs, found_drop_set)]
         if occursin(pair, code)
             push!(found_pairs, pair)
         end
