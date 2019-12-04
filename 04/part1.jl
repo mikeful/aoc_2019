@@ -1,4 +1,4 @@
-numpairs = Set([string(x, x) for x in 0:9])
+numpairs = [string(x, x) for x in 0:9]
 
 function is_valid(code)
     length(code) != 6 ? (return false) : nothing
